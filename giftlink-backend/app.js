@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const pinoLogger = require('./logger');
+const giftRoutes = require('./routes/giftRoutes');
 
 const connectToDatabase = require('./models/db');
 const {loadData} = require("./util/import-mongo/index");
@@ -20,6 +21,7 @@ connectToDatabase().then(() => {
 
 
 app.use(express.json());
+app.use('/api/gifts', giftRoutes);
 
 // Route files
 // Gift API Task 1: import the giftRoutes and store in a constant called giftroutes
